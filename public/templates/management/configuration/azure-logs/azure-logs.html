@@ -1,0 +1,70 @@
+<!-- General card -->
+<md-card class="wz-md-card" style="overflow-y:auto;" ng-if="!JSONContent && !XMLContent && configurationSubTab === 'azure-logs'">
+    <md-card-content>
+        <div layout="row" layout-align="start center">
+            <div>
+                <span class="font-size-16">Main settings</span>
+                <div class="wz-margin-top-10">
+                    <span class="md-subheader small">Common settings applied to all Amazon S3 buckets</span>
+                </div>
+            </div>
+            <span flex></span>
+            <span ng-class="JSONContent ? 'wz-text-active' : ''" class="wz-text-link small" ng-click="getJSON()">JSON</span>
+            <span class="small">&nbsp;&centerdot;&nbsp;</span>
+            <span ng-class="XMLContent ? 'wz-text-active' : ''" class="wz-text-link small" ng-click="getXML()">XML</span>
+        </div>
+        <md-divider class="wz-margin-top-10"></md-divider>
+
+         <!-- The container for both list and detail -->
+         <div flex="auto" layout="row" class="wz-margin-top-10" >
+
+            <!-- Detail container -->
+            <div flex layout="column" ng-if="currentConfig['azure-logs']" >
+              <div flex="auto" class="wz-item-detail" style="margin-bottom:50px !important; height: 100%;">
+                <wz-config-item label="Enabled" value="currentConfig['azure-logs'].disabled === 'yes' ? 'no' : 'yes'">
+                </wz-config-item>
+                <wz-config-item label="Timeout for each evaluation" value="currentConfig['azure-logs'].timeout">
+                </wz-config-item>
+                <wz-config-item label="Day of the month to run the Azure-Logs" value="currentConfig['azure-logs'].day">
+                </wz-config-item>
+                <wz-config-item label="Day of the month to run the Azure-Logs" value="currentConfig['azure-logs'].wday">
+                </wz-config-item>
+                <wz-config-item label="Time of the day to run the Azure-Logs." value="currentConfig['azure-logs'].time">
+                </wz-config-item>
+                <wz-config-item label="Interval between Azure-Logs executions." value="currentConfig['azure-logs'].interval">
+                </wz-config-item>
+                <wz-config-item label="Run evaluation immediately when service is started." value="currentConfig['azure-logs'].run_on_start">
+                </wz-config-item>
+              </div>
+
+              <div ng-repeat="currentContent in currentConfig['azure-logs'].content" ng-if="currentContent.type || currentContent.tag">
+                <div class="wz-margin-top-10">
+                    <!-- <span class="font-size-16">{{formatAzureType(currentContent.type || currentContent.tag)}}</span> -->
+                    <span class="font-size-16">{{currentContent.type || currentContent.tag}}</span> 
+                </div>
+                <md-divider  class="wz-margin-top-15"></md-divider>
+      
+                <!-- Configuration block -->
+                <div class="wz-padding-top-10" style="margin-bottom: 50px !important">
+                    <wz-config-item label="Application id" value="currentContent.application_id">
+                      </wz-config-item>
+                    <wz-config-item label="Tenant domain" value="currentContent.tenantdomain">
+                      </wz-config-item>
+                    <wz-config-item label="Application key" value="currentContent.application_key">
+                      </wz-config-item>
+                    <wz-config-item label="Account name" value="currentContent.account_name">
+                      </wz-config-item>
+                    <wz-config-item label="Account key" value="currentContent.account_key">
+                      </wz-config-item>
+                    <wz-config-item label="Path of the file that contains the application identifier and the application key" value="currentContent.auth_path">
+                      </wz-config-item>
+                </div>
+                <!-- End configuration block -->
+              </div>
+
+            </div>
+            <!-- End detail container -->
+          </div>
+    </md-card-content>
+</md-card>
+<!-- End general card -->

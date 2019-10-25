@@ -1,0 +1,33 @@
+<div flex="auto"layout="column" ng-if="configurationTab === 'azure-logs'" ng-init="switchConfigurationSubTab('azure-logs')">
+
+    <!-- Headline -->
+    <div layout="column" layout-padding>
+        <div>
+            <span class="font-size-18">Azure Logs</span>
+            <span class="wz-agent-status-indicator small teal">Enabled</span>
+        </div>
+        <span class="md-subheader">Configuration options of the Azure-Logs wodle</span>
+    </div>
+    <!-- End headline -->
+
+    <!-- Loading ring -->
+    <div class="md-padding md-padding-top-16" ng-if="load">
+        <react-component name="EuiProgress" props="{size: 'xs', color: 'primary'}" />
+    </div>
+
+    <!-- This section contains the main content and the right sidenav -->
+    <div flex="auto" layout="row" ng-if="!load">
+
+        <!-- No configuration section -->
+        <wz-no-config
+          flex
+          error="currentConfig['wmodules-wmodules']"
+          ng-if="currentConfig['wmodules-wmodules'] && isString(currentConfig['wmodules-wmodules'])"></wz-no-config>
+        <wz-no-config
+          flex
+          error="'not-present'"
+          ng-if="currentConfig && !currentConfig['azure-logs'] && !isString(currentConfig['wmodules-wmodules'])"></wz-no-config>
+        <!-- End no configuration section -->
+
+        <!-- This section is the main content -->
+        <div flex layout="column" ng-if="currentConfig && currentConfig['azure-logs']" class="d-height">

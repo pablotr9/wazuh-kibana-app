@@ -57,6 +57,7 @@ export const TabNames = {
   'cis-cat': 'CIS-CAT',
   'vulnerability-detector': 'Vulnerabilities',
   'aws-s3': 'Amazon S3',
+  'azure-logs': 'Azure Logs',
   command: 'Wazuh commands',
   client: 'Client configuration',
   edition: 'Edit node configuration',
