@@ -4,7 +4,8 @@
     <div layout="column" layout-padding>
         <div>
             <span class="font-size-18">Azure Logs</span>
-            <span class="wz-agent-status-indicator small teal">Enabled</span>
+            <span ng-if="currentConfig && currentConfig['azure-logs'] && currentConfig['azure-logs'].disabled === 'no'" class="wz-agent-status-indicator small teal">Enabled</span>
+            <span ng-if="!currentConfig || !currentConfig['azure-logs'] || (currentConfig && currentConfig['azure-logs'] && currentConfig['azure-logs'].disabled === 'yes')" class="wz-agent-status-indicator small red">Disabled</span>
         </div>
         <span class="md-subheader">Configuration options of the Azure-Logs wodle</span>
     </div>
