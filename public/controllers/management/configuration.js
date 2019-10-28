@@ -56,6 +56,9 @@ export class ConfigurationController {
     this.$scope.switchConfigurationSubTab = configurationSubTab =>
       this.switchConfigurationSubTab(configurationSubTab);
 
+    this.$scope.formatAzureType = type =>
+      this.formatAzureType(type);
+
     this.$scope.switchWodle = (wodleName, navigate = true) =>
       this.switchWodle(wodleName, navigate);
 
@@ -117,6 +120,17 @@ export class ConfigurationController {
       );
     }
     DynamicHeight.dynamicHeight('d-height', 50);
+  }
+
+  formatAzureType(type) {
+    if(type === 'log_analytics')
+      return 'Azure Log Analytics'
+    if(type === 'graph')
+      return 'Azure Active Directory Graph'
+    if(type === 'storage')
+      return 'Azure Storage'
+
+    return type // if it's not one of the above then it's a custom tag
   }
 
   /**

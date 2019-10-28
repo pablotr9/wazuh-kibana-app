@@ -39,25 +39,26 @@
 
               <div ng-repeat="currentContent in currentConfig['azure-logs'].content" ng-if="currentContent.type || currentContent.tag">
                 <div class="wz-margin-top-10">
-                    <!-- <span class="font-size-16">{{formatAzureType(currentContent.type || currentContent.tag)}}</span> -->
-                    <span class="font-size-16">{{currentContent.type || currentContent.tag}}</span> 
+                     <span class="font-size-16">{{formatAzureType(currentContent.type || currentContent.tag)}}</span>
                 </div>
                 <md-divider  class="wz-margin-top-15"></md-divider>
       
                 <!-- Configuration block -->
                 <div class="wz-padding-top-10" style="margin-bottom: 50px !important">
-                    <wz-config-item label="Application id" value="currentContent.application_id">
-                      </wz-config-item>
-                    <wz-config-item label="Tenant domain" value="currentContent.tenantdomain">
-                      </wz-config-item>
-                    <wz-config-item label="Application key" value="currentContent.application_key">
-                      </wz-config-item>
-                    <wz-config-item label="Account name" value="currentContent.account_name">
-                      </wz-config-item>
-                    <wz-config-item label="Account key" value="currentContent.account_key">
-                      </wz-config-item>
-                    <wz-config-item label="Path of the file that contains the application identifier and the application key" value="currentContent.auth_path">
-                      </wz-config-item>
+                  <wz-config-item label="Application id" value="currentContent.application_id">
+                    </wz-config-item>
+                  <wz-config-item label="Tag" value="currentContent.tag">
+                    </wz-config-item>
+                  <wz-config-item label="Tenant domain" value="currentContent.tenantdomain">
+                    </wz-config-item>
+                  <wz-config-item label="Application key" value="currentContent.application_key">
+                    </wz-config-item>
+                  <wz-config-item label="Account name" value="currentContent.account_name">
+                    </wz-config-item>
+                  <wz-config-item label="Account key" value="currentContent.account_key">
+                    </wz-config-item>
+                  <wz-config-item label="Path of the file that contains the application identifier and the application key" value="currentContent.auth_path">
+                    </wz-config-item>
                 </div>
                 <!-- End configuration block -->
               </div>
